@@ -13,8 +13,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText etNome, etEmail;
-    private EditText etTelefone;
+    private EditText etNome, etEmail, etTelefone;
     private Button btnAdicionar, btnAtualizar, btnDeletar;
     private ListView lvClientes;
     private DataBaseHelper databaseHelper;
