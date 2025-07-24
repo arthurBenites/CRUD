@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- Título da Aplicação -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cadastro de Clientes"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <!-- Campo para o Nome do Cliente -->
+    <EditText
+        android:id="@+id/etNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome do Cliente"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="8dp"
+        android:padding="12dp"
+        android:background="@android:drawable/edit_text" />
+
+    <!-- Campo para o Email do Cliente -->
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email do Cliente"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:background="@android:drawable/edit_text" />
+
+    <!-- Layout para os Botões de Ação -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="16dp">
+
+        <!-- Botão Adicionar -->
+        <Button
+            android:id="@+id/btnAdicionar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adicionar"
+            android:layout_marginEnd="8dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
+
+        <!-- Botão Atualizar (inicialmente desabilitado) -->
+        <Button
+            android:id="@+id/btnAtualizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Atualizar"
+            android:layout_marginEnd="8dp"
+            android:enabled="false"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
+
+        <!-- Botão Deletar (inicialmente desabilitado) -->
+        <Button
+            android:id="@+id/btnDeletar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deletar"
+            android:enabled="false"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
+    </LinearLayout>
+
+    <!-- ListView para exibir a lista de clientes -->
+    <ListView
+        android:id="@+id/lvClientes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerHeight="1dp"
+        android:divider="#CCCCCC" />
+
+</LinearLayout>
