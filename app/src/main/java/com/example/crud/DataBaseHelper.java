@@ -17,12 +17,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_NOME = "nome";
     public static final String COLUMN_EMAIL = "email";
+    public static final String COLUMN_TELEFONE = "telefone";
 
     private static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_CLIENTES + " (" +
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_NOME + " TEXT NOT NULL, " +
-                    COLUMN_EMAIL + " TEXT NOT NULL UNIQUE);";
+                    COLUMN_EMAIL + " TEXT NOT NULL UNIQUE," +
+                    COLUMN_TELEFONE + " TEXT NOT NULL);"
+            ;
 
     public DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -44,6 +47,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NOME, cliente.getNome());
         values.put(COLUMN_EMAIL, cliente.getEmail());
+        values.put(COLUMN_TELEFONE, cliente.getTelefone());
         long newRowId = db.insert(TABLE_CLIENTES, null, values);
         db.close();
         return newRowId;
@@ -61,6 +65,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 cliente.setId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)));
                 cliente.setNome(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOME)));
                 cliente.setEmail(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL)));
+                cliente.setTelefone(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TELEFONE)));
                 clientesList.add(cliente);
             } while (cursor.moveToNext());
         }
@@ -74,6 +79,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NOME, cliente.getNome());
         values.put(COLUMN_EMAIL, cliente.getEmail());
+        values.put(COLUMN_TELEFONE, cliente.getTelefone());
         int rowsAffected = db.update(TABLE_CLIENTES, values, COLUMN_ID + " = ?",
                 new String[]{String.valueOf(cliente.getId())});
         db.close();

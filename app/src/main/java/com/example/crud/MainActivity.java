@@ -14,6 +14,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private EditText etNome, etEmail;
+    private EditText etTelefone;
     private Button btnAdicionar, btnAtualizar, btnDeletar;
     private ListView lvClientes;
     private DataBaseHelper databaseHelper;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         etNome = findViewById(R.id.etNome);
         etEmail = findViewById(R.id.etEmail);
+        etTelefone = findViewById(R.id.etTelefone);
         btnAdicionar = findViewById(R.id.btnAdicionar);
         btnAtualizar = findViewById(R.id.btnAtualizar);
         btnDeletar = findViewById(R.id.btnDeletar);
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             clienteSelecionado = (Cliente) parent.getItemAtPosition(position);
             etNome.setText(clienteSelecionado.getNome());
             etEmail.setText(clienteSelecionado.getEmail());
+            etTelefone.setText(clienteSelecionado.getTelefone());
             btnAtualizar.setEnabled(true);
             btnDeletar.setEnabled(true);
             btnAdicionar.setEnabled(false);
@@ -59,13 +62,14 @@ public class MainActivity extends AppCompatActivity {
     private void adicionarCliente() {
         String nome = etNome.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
+        String telefone = etTelefone.getText().toString().trim();
 
-        if (nome.isEmpty() || email.isEmpty()) {
+        if (nome.isEmpty() || email.isEmpty() || telefone.isEmpty()) {
             Toast.makeText(this, "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Cliente cliente = new Cliente(nome, email);
+        Cliente cliente = new Cliente(nome, email, telefone);
         long id = databaseHelper.adicionarCliente(cliente);
 
         if (id != -1) {
@@ -81,14 +85,17 @@ public class MainActivity extends AppCompatActivity {
 
         String nome = etNome.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
+        String telefone = etTelefone.getText().toString().trim();
 
-        if (nome.isEmpty() || email.isEmpty()) {
+        if (nome.isEmpty() || email.isEmpty() || telefone.isEmpty()) {
             Toast.makeText(this, "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         clienteSelecionado.setNome(nome);
         clienteSelecionado.setEmail(email);
+        clienteSelecionado.setTelefone(telefone);
+
         int rowsAffected = databaseHelper.atualizarCliente(clienteSelecionado);
 
         if (rowsAffected > 0) {
@@ -109,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
     private void limparCamposEResetarUI() {
         etNome.setText("");
         etEmail.setText("");
+        etTelefone.setText("");
         clienteSelecionado = null;
         btnAdicionar.setEnabled(true);
         btnAtualizar.setEnabled(false);

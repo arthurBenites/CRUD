@@ -35,10 +35,21 @@
         android:layout_height="wrap_content"
         android:hint="Email do Cliente"
         android:inputType="textEmailAddress"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:padding="12dp"
         android:background="@android:drawable/edit_text" />
 
+    <!-- Campo para o Telefone do Cliente -->
+    <EditText
+        android:id="@+id/etTelefone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@android:drawable/edit_text"
+        android:ems="10"
+        android:hint="Telefone"
+        android:inputType="phone"
+        android:padding="12dp" />
     <!-- Layout para os Botões de Ação -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -83,8 +94,10 @@
     <ListView
         android:id="@+id/lvClientes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:dividerHeight="1dp"
-        android:divider="#CCCCCC" />
+        android:layout_height="215dp"
+        android:divider="#CCCCCC"
+        android:dividerHeight="1dp" />
+
+
 
 </LinearLayout>
